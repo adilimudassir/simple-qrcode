@@ -15,6 +15,11 @@ use SimpleSoftwareIO\QrCode\Generator;
 
 class GeneratorTest extends TestCase
 {
+    public function test_it_generates_svg_with_an_explicit_null_filename(): void
+    {
+        $this->assertStringContainsString('<svg', (string) (new Generator)->generate('fooBar', null));
+    }
+
     public function test_chaining_is_possible()
     {
         $this->assertInstanceOf(Generator::class, (new Generator)->size(100));
